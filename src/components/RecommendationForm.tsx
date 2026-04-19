@@ -87,8 +87,8 @@ function ReccomendationForm({
 
       const result: { meals: Recommendation[] } = await response.json();
 
-      if (!result.meals.length) {
-        throw new Error(`No reccomendations found.`);
+      if (!result.meals?.length) {
+        throw new Error(`No recommendations found for the selected area and ingredient.`);
       }
 
       setReccomentations(result.meals);
@@ -96,10 +96,9 @@ function ReccomendationForm({
       setError(null);
       setStep(0);
     } catch (error: unknown) {
-      console.error('Error fetching recommendations:', error);
       setReccomentations([]);
       // To be better defined based on the error
-      setError('An unknown error occurred');
+      setError(error instanceof Error ? error.message : 'An error occurred while fetching recommendations.');
     } finally {
       setIsSubmitting(false);
       setIsLoadingRecommendations(false);

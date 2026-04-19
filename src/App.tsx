@@ -45,29 +45,30 @@ function App() {
         />
       </div>
 
-      {isLoadingRecommendations && (
-        <div
-          className="rect skeleton-content current-recommendation"
-          style={{ width: '500px', height: '400px', margin: '0 auto' }}
-        ></div>
-      )}
+      <div className="current-recommendation">
+        {isLoadingRecommendations && (
+          <div
+            className="rect skeleton-content"
+            style={{ width: '500px', height: '400px', margin: '0 auto' }}
+          ></div>
+        )}
+        {recommendations?.length ? (
+          <>
+            <RecommendationCard
+              recommendation={recommendations[recommendationIndex]}
+              area={formData.area}
+              ingredient={formData.ingredient}
+            />
 
-      {recommendations.length ? (
-        <div className="current-recommendation">
-          <RecommendationCard
-            recommendation={recommendations[recommendationIndex]}
-            area={formData.area}
-            ingredient={formData.ingredient}
-          />
+            <NewIdeaButton
+              recommendations={recommendations}
+              setRecommendationIndex={setRecommendationIndex}
+            />
 
-          <NewIdeaButton
-            recommendations={recommendations}
-            setRecommendationIndex={setRecommendationIndex}
-          />
-
-          <Feedback saveFeedback={saveFeedback} />
-        </div>
-      ) : null}
+            <Feedback saveFeedback={saveFeedback} />
+          </>
+        ) : null}
+      </div>
 
       <div className="recommendation-history">
         <History />
