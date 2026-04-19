@@ -9,6 +9,7 @@ import History from './components/History';
 import { useHistory } from './context/HistoryContext';
 
 function App() {
+  const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [formData, setFormData] = useState({
     area: null,
@@ -40,8 +41,16 @@ function App() {
           setReccomentations={setRecommendations}
           formData={formData}
           setFormData={setFormData}
+          setIsLoadingRecommendations={setIsLoadingRecommendations}
         />
       </div>
+
+      {isLoadingRecommendations && (
+        <div
+          className="rect skeleton-content current-recommendation"
+          style={{ width: '500px', height: '400px', margin: '0 auto' }}
+        ></div>
+      )}
 
       {recommendations.length ? (
         <div className="current-recommendation">

@@ -12,6 +12,7 @@ function SelectIngredient({ updateFields, value, options, isLoading, error }) {
         onChange={(e) => updateFields({ ingredient: e.target.value })}
         id="ingredients-input"
         disabled={isDisabled}
+        tabIndex={1}
       />
       <datalist id="ingredients">
         <option value="">Select an ingredient ...</option>

@@ -5,7 +5,12 @@ import SelectIngredient from './SelectIngredient';
 import type { Recommendation } from '../types';
 import useFetch from '../hooks/useFetch';
 
-function ReccomendationForm({ setReccomentations, formData, setFormData }) {
+function ReccomendationForm({
+  setReccomentations,
+  formData,
+  setFormData,
+  setIsLoadingRecommendations,
+}) {
   const [currentStep, setStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -27,12 +32,18 @@ function ReccomendationForm({ setReccomentations, formData, setFormData }) {
     'https://www.themealdb.com/api/json/v1/1/list.php?a=list',
   );
 
+  function resetFocus() {
+    document.querySelector<HTMLInputElement>("input[tabindex='1']")?.focus();
+  }
+
   function next() {
     setStep(Math.min(currentStep + 1, 1));
+    resetFocus();
   }
 
   function prev() {
     setStep(Math.max(currentStep - 1, 0));
+    resetFocus();
   }
 
   function updateFields(fields) {
@@ -61,9 +72,10 @@ function ReccomendationForm({ setReccomentations, formData, setFormData }) {
   const isSubmitDisabled =
     !(formData.area && formData.ingredient) || isSubmitting || isSubmitted;
 
-  async function onSubmit(e: React.SubmitEvent) {
+  async function handleSubmit(e: React.SubmitEvent) {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsLoadingRecommendations(true);
     try {
       const response = await fetch(
         `https://www.themealdb.com/api/json/v1/1/filter.php?a=${formData.area}&i=${formData.ingredient}`,
@@ -90,11 +102,12 @@ function ReccomendationForm({ setReccomentations, formData, setFormData }) {
       setError('An unknown error occurred');
     } finally {
       setIsSubmitting(false);
+      setIsLoadingRecommendations(false);
     }
   }
 
   return (
-    <form className="reccomendation-form" onSubmit={onSubmit}>
+    <form className="reccomendation-form" onSubmit={handleSubmit}>
       {steps[currentStep]}
 
       <div className="reccomendation-form__navigation">

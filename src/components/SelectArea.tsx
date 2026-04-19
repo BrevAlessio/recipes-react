@@ -13,6 +13,7 @@ function SelectArea({ updateFields, value, options, isLoading, error }) {
         id="areas-input"
         disabled={isDisabled}
         type="search"
+        tabIndex={1}
       />
       <datalist id="areas">
         <option value="">Select an area ...</option>
