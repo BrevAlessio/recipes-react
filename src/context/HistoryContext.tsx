@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useState, useEffect, useContext, useRef } from 'react';
 import type { HistoryItem } from '../types';
 

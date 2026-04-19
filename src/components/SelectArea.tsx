@@ -12,6 +12,7 @@ function SelectArea({ updateFields, value, options, isLoading, error }) {
         onChange={(e) => updateFields({ area: e.target.value })}
         id="areas-input"
         disabled={isDisabled}
+        type="search"
       />
       <datalist id="areas">
         <option value="">Select an area ...</option>

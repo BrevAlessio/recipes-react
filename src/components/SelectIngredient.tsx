@@ -6,6 +6,7 @@ function SelectIngredient({ updateFields, value, options, isLoading, error }) {
     <>
       <label htmlFor="ingredients-input">Select ingredients</label>
       <input
+        type="search"
         list="ingredients"
         value={value ?? ''}
         onChange={(e) => updateFields({ ingredient: e.target.value })}

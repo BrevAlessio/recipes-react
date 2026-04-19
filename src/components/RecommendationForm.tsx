@@ -83,12 +83,11 @@ function ReccomendationForm({ setReccomentations, formData, setFormData }) {
       setIsSubmitted(true);
       setError(null);
       setStep(0);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unknown error occurred');
-      }
+    } catch (error: unknown) {
+      console.error('Error fetching recommendations:', error);
+      setReccomentations([]);
+      // To be better defined based on the error
+      setError('An unknown error occurred');
     } finally {
       setIsSubmitting(false);
     }
@@ -114,7 +113,7 @@ function ReccomendationForm({ setReccomentations, formData, setFormData }) {
       >
         Cook 🧑‍🍳
       </button>
-      {<p className="error">{error}</p>}
+      {error && <p className="error-message">{error}</p>}
     </form>
   );
 }
