@@ -5,20 +5,22 @@ function SelectArea({ updateFields, value, options, isLoading, error }) {
 
   return (
     <>
-      <label htmlFor="areas">Select area / cuisine</label>
-      <select
+      <label htmlFor="areas-input">Select area / cuisine</label>
+      <input
+        list="areas"
         value={value ?? ''}
         onChange={(e) => updateFields({ area: e.target.value })}
-        id="areas"
+        id="areas-input"
         disabled={isDisabled}
-      >
+      />
+      <datalist id="areas">
         <option value="">Select an area ...</option>
         {areas.map((option) => (
           <option key={option} value={option}>
             {option}
           </option>
         ))}
-      </select>
+      </datalist>
       {errorMessage}
     </>
   );

@@ -34,3 +34,10 @@
   font-size: var(--font-size-sm);
   margin-top: var(--space-xs);
 }
+
+input {
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  width: 50%;
+}

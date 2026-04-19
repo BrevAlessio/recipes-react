@@ -4,21 +4,22 @@ function SelectIngredient({ updateFields, value, options, isLoading, error }) {
 
   return (
     <>
-      <label htmlFor="ingredients">Select ingredients</label>
-      <select
+      <label htmlFor="ingredients-input">Select ingredients</label>
+      <input
+        list="ingredients"
         value={value ?? ''}
-        id="ingredients"
-        disabled={isDisabled}
-        required
         onChange={(e) => updateFields({ ingredient: e.target.value })}
-      >
+        id="ingredients-input"
+        disabled={isDisabled}
+      />
+      <datalist id="ingredients">
         <option value="">Select an ingredient ...</option>
         {areas.map((option) => (
           <option key={option} value={option}>
             {option}
           </option>
         ))}
-      </select>
+      </datalist>
       {error ? <p className="error-message">An error occurred</p> : null}
     </>
   );

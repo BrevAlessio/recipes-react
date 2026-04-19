@@ -38,9 +38,7 @@ function History() {
               <p className="history__inputs">
                 {item.inputs.area} - {item.inputs.ingredient}
               </p>
-              <p className="history__date">
-                {getDateTime(item.createdAt)}
-              </p>
+              <p className="history__date">{getDateTime(item.createdAt)}</p>
             </div>
           </div>
         ))}
