@@ -7,6 +7,8 @@ import NewIdeaButton from './components/NewIdeaButton';
 import Feedback from './components/Feedback';
 import History from './components/History';
 import { useHistory } from './context/HistoryContext';
+import Search from './components/Search';
+import Skeleton from './components/Skeleton';
 
 function App() {
   const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false);
@@ -46,12 +48,7 @@ function App() {
       </div>
 
       <div className="current-recommendation">
-        {isLoadingRecommendations && (
-          <div
-            className="rect skeleton-content"
-            style={{ width: '500px', height: '400px', margin: '0 auto' }}
-          ></div>
-        )}
+        {isLoadingRecommendations && <Skeleton />}
         {recommendations?.length ? (
           <>
             <RecommendationCard
@@ -68,6 +65,10 @@ function App() {
             <Feedback saveFeedback={saveFeedback} />
           </>
         ) : null}
+      </div>
+
+      <div className="recommendation-search">
+        <Search />
       </div>
 
       <div className="recommendation-history">

@@ -5,7 +5,7 @@ function SelectArea({ updateFields, value, options, isLoading, error }) {
 
   return (
     <>
-      <label htmlFor="areas-input">Select area / cuisine</label>
+      <label htmlFor="areas-input">Select area / cuisine 🌍️</label>
       <input
         list="areas"
         value={value ?? ''}

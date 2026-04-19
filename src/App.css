@@ -1,5 +1,5 @@
 main {
-  width: 70vw;
+  width: 80vw;
   min-height: 500px;
   margin: auto;
   padding: var(--space-lg);
@@ -9,11 +9,11 @@ main {
   box-shadow: var(--shadow);
   display: grid;
   grid-template-areas:
-    '. title .'
-    'form form history'
-    'recommendation recommendation history';
+    '. title title .'
+    'form form history search'
+    'recommendation recommendation history search';
   grid-template-rows: 50px 200px 500px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: var(--space-lg);
 }
 
@@ -34,6 +34,10 @@ main {
 
 .recommendation-history {
   grid-area: history;
+}
+
+.recommendation-search {
+  grid-area: search;
 }
 
 main h1 {

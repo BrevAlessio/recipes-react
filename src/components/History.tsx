@@ -28,7 +28,7 @@ function History() {
 
   return (
     <div className="history">
-      <h2>History</h2>
+      <h2>History ⏳️</h2>
       <p>You have {history.length} items in your history.</p>
       {history.length ? (
         <>

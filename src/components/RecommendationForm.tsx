@@ -98,7 +98,11 @@ function ReccomendationForm({
     } catch (error: unknown) {
       setReccomentations([]);
       // To be better defined based on the error
-      setError(error instanceof Error ? error.message : 'An error occurred while fetching recommendations.');
+      setError(
+        error instanceof Error
+          ? error.message
+          : 'An error occurred while fetching recommendations.',
+      );
     } finally {
       setIsSubmitting(false);
       setIsLoadingRecommendations(false);

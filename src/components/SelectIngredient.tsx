@@ -4,7 +4,7 @@ function SelectIngredient({ updateFields, value, options, isLoading, error }) {
 
   return (
     <>
-      <label htmlFor="ingredients-input">Select ingredients</label>
+      <label htmlFor="ingredients-input">Select ingredients 🛒</label>
       <input
         type="search"
         list="ingredients"
