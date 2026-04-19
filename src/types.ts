@@ -3,3 +3,12 @@ export type Recommendation = {
   strMeal: string;
   strMealThumb: string;
 };
+
+export type HistoryItem = Recommendation & {
+  isPositive: boolean;
+  createdAt: Date;
+  inputs: {
+    area: string;
+    ingredient: string;
+  };
+};

@@ -1,6 +1,4 @@
 .reccomendation-form {
-  width: 80%;
-  margin: auto;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -9,7 +7,7 @@
 .reccomendation-form__submit {
   width: 100px;
   font-size: medium;
-  margin-left: auto;
+  margin: auto;
 }
 
 .reccomendation-form__navigation {

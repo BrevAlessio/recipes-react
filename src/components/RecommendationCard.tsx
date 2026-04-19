@@ -1,23 +1,23 @@
-import './RecommendetionCard.css';
+import './RecommendationCard.css';
 import type { Recommendation } from '../types';
 
 interface Props {
-  reccomendation: Recommendation;
+  recommendation: Recommendation;
   area: string;
   ingredient: string;
 }
 
-function RecommendationCard({ reccomendation, area, ingredient }: Props) {
+function RecommendationCard({ recommendation, area, ingredient }: Props) {
   return (
     <>
       <div className="recommendation-card">
-        <img src={reccomendation.strMealThumb} className="recommendation-card__image" />
+        <img src={recommendation.strMealThumb} className="recommendation-card__image" />
         <div className="recommendation-card__content">
-          <h2 className="recommendation-card__title">{reccomendation.strMeal}</h2>
+          <h2 className="recommendation-card__title">{recommendation.strMeal}</h2>
           <p>{area}</p>
           <p>{ingredient}</p>
           <a
-            href={'https://www.themealdb.com/meal/' + reccomendation.idMeal}
+            href={'https://www.themealdb.com/meal/' + recommendation.idMeal}
             target="_blank"
           >
             Link to the recipe

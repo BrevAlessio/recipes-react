@@ -1,6 +1,9 @@
+@import './reset.css';
+
 :root {
   /* Colors */
   --color-foreground: #000000;
+  --color-foreground-secondary: #333333;
   --color-foreground-muted: #aaa;
   --color-border: #999999;
   --color-background: #fefefe;
@@ -35,10 +38,14 @@ html {
 
 h1 {
   font-size: larger;
+  font-weight: bold;
+  margin-bottom: var(--space-md);
 }
 
 h2 {
   font-size: large;
+  font-weight: bold;
+  margin-bottom: var(--space-sm);
 }
 
 p,
@@ -98,10 +105,10 @@ body {
 }
 
 .magic-button--larger {
-  font-size: var(--font-size-xl);
-  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-lg);
+  padding: var(--space-sm) var(--space-lg);
   max-width: 100%;
-  min-width: 140px;
+  min-width: 120px;
 }
 
 .magic-button--smaller {

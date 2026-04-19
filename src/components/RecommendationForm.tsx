@@ -100,10 +100,10 @@ function ReccomendationForm({ setReccomentations, formData, setFormData }) {
 
       <div className="reccomendation-form__navigation">
         <button onClick={prev} disabled={currentStep === 0}>
-          {'< Prev'}{' '}
+          {'⬅️ Back'}
         </button>
         <button onClick={next} disabled={currentStep === 1}>
-          {'Next >'}{' '}
+          {'Next ➡️'}
         </button>
       </div>
 
@@ -112,7 +112,7 @@ function ReccomendationForm({ setReccomentations, formData, setFormData }) {
         disabled={isSubmitDisabled}
         className="reccomendation-form__submit magic-button magic-button--smaller"
       >
-        Cook
+        Cook 🧑‍🍳
       </button>
       {<p className="error">{error}</p>}
     </form>

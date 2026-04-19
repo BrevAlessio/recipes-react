@@ -1,20 +1,41 @@
 main {
-  width: 60vw;
+  width: 70vw;
   min-height: 500px;
   margin: auto;
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   border: 1px solid var(--color-border);
   border-radius: 5px;
   background-color: var(--color-background);
   box-shadow: var(--shadow);
+  display: grid;
+  grid-template-areas:
+    '. title .'
+    'form form history'
+    'recommendation recommendation history';
+  grid-template-rows: 50px 200px auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.title {
+  grid-area: title;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recommendation-form {
+  grid-area: form;
+}
+
+.current-recommendation {
+  grid-area: recommendation;
+}
+
+.recommendation-history {
+  grid-area: history;
 }
 
 main h1 {
   text-align: center;
-}
-
-.new-idea {
-  margin: auto;
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-md);
 }

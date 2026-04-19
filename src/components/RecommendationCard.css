@@ -7,6 +7,10 @@
   box-shadow: var(--shadow);
 }
 
+.recommendation-card p {
+  margin-bottom: var(--space-sm);
+}
+
 .recommendation-card__image {
   width: 100%;
   aspect-ratio: 2;

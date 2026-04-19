@@ -1,8 +1,12 @@
-import { useState } from 'react';
 import './App.css';
+import { useState } from 'react';
 import RecommendationCard from './components/RecommendationCard';
 import RecomendationForm from './components/RecommendationForm';
-import type { Recommendation } from './types';
+import type { HistoryItem, Recommendation } from './types';
+import NewIdeaButton from './components/NewIdeaButton';
+import Feedback from './components/Feedback';
+import History from './components/History';
+import useHistory from './logic/useHistory';
 
 function App() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
@@ -11,36 +15,55 @@ function App() {
     ingredient: null,
   });
   const [recommendationIndex, setRecommendationIndex] = useState(0);
+  const { history, addToHistory } = useHistory();
 
-  function getNewIdea() {
-    setRecommendationIndex((prev) => {
-      return prev === recommendations.length - 1 ? 0 : prev + 1;
-    });
+  function saveFeedback(isPositive: boolean) {
+    const currentRecommendation = recommendations[recommendationIndex];
+    const newHistoryItem: HistoryItem = {
+      ...currentRecommendation,
+      isPositive, // This should be set based on user feedback
+      createdAt: new Date(),
+      inputs: {
+        area: formData.area,
+        ingredient: formData.ingredient,
+      },
+    };
+    addToHistory(newHistoryItem);
   }
 
   return (
     <main>
-      <h1>Get your meal reccomendation!</h1>
-      <RecomendationForm
-        setReccomentations={setRecommendations}
-        formData={formData}
-        setFormData={setFormData}
-      />
+      <h1 className="title">Get your meal reccomendation!</h1>
+
+      <div className="recommendation-form">
+        <RecomendationForm
+          setReccomentations={setRecommendations}
+          formData={formData}
+          setFormData={setFormData}
+        />
+      </div>
+
       {recommendations.length ? (
-        <div className="recommendation">
-          <button
-            className="new-idea magic-button magic-button--larger"
-            onClick={getNewIdea}
-          >
-            New idea
-          </button>
+        <div className="current-recommendation">
           <RecommendationCard
-            reccomendation={recommendations[recommendationIndex]}
+            recommendation={recommendations[recommendationIndex]}
             area={formData.area}
             ingredient={formData.ingredient}
           />
+
+          <NewIdeaButton
+            recommendations={recommendations}
+            setRecommendationIndex={setRecommendationIndex}
+          />
+
+
+          <Feedback saveFeedback={saveFeedback} />
         </div>
       ) : null}
+
+      <div className='recommendation-history'>
+        <History history={history} />
+      </div>
     </main>
   );
 }
