@@ -1,0 +1,21 @@
+.recommendation-card {
+  background-color: var(--color-background);
+  border-radius: 5px;
+  padding: var(--space);
+  width: 80%;
+  margin: auto;
+  box-shadow: var(--shadow);
+}
+
+.recommendation-card__image {
+  width: 100%;
+  aspect-ratio: 2;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.recommendation-card__content {
+  padding: var(--space-md);
+}

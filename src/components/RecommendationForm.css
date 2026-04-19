@@ -1,0 +1,38 @@
+.reccomendation-form {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.reccomendation-form__submit {
+  width: 100px;
+  font-size: medium;
+  margin-left: auto;
+}
+
+.reccomendation-form__navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reccomendation-form__navigation button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.reccomendation-form__steps {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 400px;
+  max-width: 400px;
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+}
