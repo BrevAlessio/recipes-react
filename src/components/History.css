@@ -5,12 +5,21 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  overflow-y: scroll;
+  height: 700px;
 }
 
 .history__list {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+}
+
+.history__clear {
+  width: min-content;
+  text-wrap: nowrap;
+  font-size: small;
+  cursor: pointer;
 }
 
 .history__item {
