@@ -12,10 +12,12 @@ const useFetch = <T>(url: string): UseFetchReturn<T> => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, { signal: abortController.signal });
 
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
@@ -37,7 +39,10 @@ const useFetch = <T>(url: string): UseFetchReturn<T> => {
 
     fetchData();
 
-    return () => {};
+    return () => {
+      // Avoids double trigger
+      abortController.abort();
+    };
   }, [url]);
 
   return { data, isLoading, error };
