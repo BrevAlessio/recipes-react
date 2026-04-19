@@ -6,7 +6,7 @@ import type { HistoryItem, Recommendation } from './types';
 import NewIdeaButton from './components/NewIdeaButton';
 import Feedback from './components/Feedback';
 import History from './components/History';
-import useHistory from './logic/useHistory';
+import { useHistory } from './context/HistoryContext';
 
 function App() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
@@ -15,7 +15,7 @@ function App() {
     ingredient: null,
   });
   const [recommendationIndex, setRecommendationIndex] = useState(0);
-  const { history, addToHistory } = useHistory();
+  const { addToHistory } = useHistory();
 
   function saveFeedback(isPositive: boolean) {
     const currentRecommendation = recommendations[recommendationIndex];
@@ -56,13 +56,12 @@ function App() {
             setRecommendationIndex={setRecommendationIndex}
           />
 
-
           <Feedback saveFeedback={saveFeedback} />
         </div>
       ) : null}
 
-      <div className='recommendation-history'>
-        <History history={history} />
+      <div className="recommendation-history">
+        <History />
       </div>
     </main>
   );

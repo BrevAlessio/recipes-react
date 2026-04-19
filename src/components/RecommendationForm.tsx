@@ -3,7 +3,7 @@ import { useState } from 'react';
 import SelectArea from './SelectArea';
 import SelectIngredient from './SelectIngredient';
 import type { Recommendation } from '../types';
-import useFetch from '../logic/useFetch';
+import useFetch from '../hooks/useFetch';
 
 function ReccomendationForm({ setReccomentations, formData, setFormData }) {
   const [currentStep, setStep] = useState(0);

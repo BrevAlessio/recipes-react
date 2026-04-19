@@ -6,7 +6,7 @@ function SelectIngredient({ updateFields, value, options, isLoading, error }) {
     <>
       <label htmlFor="ingredients">Select ingredients</label>
       <select
-        value={value}
+        value={value ?? ''}
         id="ingredients"
         disabled={isDisabled}
         required
