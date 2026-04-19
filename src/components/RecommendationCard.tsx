@@ -11,7 +11,13 @@ function RecommendationCard({ recommendation, area, ingredient }: Props) {
   return (
     <>
       <div className="recommendation-card">
-        <img src={recommendation.strMealThumb} className="recommendation-card__image" />
+        <img
+          src={recommendation.strMealThumb}
+          alt={recommendation.strMeal}
+          width="500"
+          height="250"
+          className="recommendation-card__image"
+        />
         <div className="recommendation-card__content">
           <h2 className="recommendation-card__title">{recommendation.strMeal}</h2>
           <p>{area}</p>

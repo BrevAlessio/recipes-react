@@ -3,14 +3,14 @@ import { useHistory } from '../context/HistoryContext';
 import { useState } from 'react';
 
 function History() {
-
   const [searchTerm, setSearchTerm] = useState('');
   const { history, clearHistory } = useHistory();
 
-  const filteredHistory = history.filter((item) =>
-    item.strMeal.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.inputs.area?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.inputs.ingredient?.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredHistory = history.filter(
+    (item) =>
+      item.strMeal.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.inputs.area?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.inputs.ingredient?.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   function getDateTime(date: Date | string) {
@@ -32,7 +32,11 @@ function History() {
       <p>You have {history.length} items in your history.</p>
       {history.length ? (
         <>
-          <input type="search" placeholder="Search history..." onChange={(e) => setSearchTerm(e.target.value)} />
+          <input
+            type="search"
+            placeholder="Search history..."
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <button onClick={clearHistory} className="history__clear">
             Clear history 🗑️
           </button>

@@ -12,7 +12,7 @@ main {
     '. title .'
     'form form history'
     'recommendation recommendation history';
-  grid-template-rows: 50px 200px auto;
+  grid-template-rows: 50px 200px 500px;
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--space-lg);
 }
