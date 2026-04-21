@@ -6,7 +6,7 @@ const SearchInput = () => {
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(null);
 
   // Debounce function
   const debounce = (func, delay) => {
@@ -20,7 +20,7 @@ const SearchInput = () => {
   const fetchSearchResults = useCallback(
     async (searchQuery) => {
       if (searchQuery.trim().length < 2) {
-        setResults([]);
+        setResults(null);
         return;
       }
 
@@ -36,7 +36,7 @@ const SearchInput = () => {
         setResults(data.meals || []);
       } catch (err) {
         setError(err.message);
-        setResults([]);
+        setResults(null);
       } finally {
         setIsLoading(false);
       }
@@ -71,7 +71,10 @@ const SearchInput = () => {
             <Skeleton width='100%' height='120px' />
           </>
         )}
-        {results.slice(0, 5).map((result) => (
+        {results && !results.length && (
+          <p>No results found.</p>
+        )}
+        {results?.slice(0, 5).map((result) => (
           <div key={result.idMeal} className="search__item">
             <img
               src={result.strMealThumb}
