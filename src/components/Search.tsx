@@ -64,9 +64,11 @@ const SearchInput = () => {
       <div className="search__list">
         {isLoading && (
           <>
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
+            <Skeleton width='100%' height='120px' />
+            <Skeleton width='100%' height='120px' />
+            <Skeleton width='100%' height='120px' />
+            <Skeleton width='100%' height='120px' />
+            <Skeleton width='100%' height='120px' />
           </>
         )}
         {results.slice(0, 5).map((result) => (

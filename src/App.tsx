@@ -67,12 +67,12 @@ function App() {
         ) : null}
       </div>
 
-      <div className="recommendation-search">
-        <Search />
-      </div>
-
       <div className="recommendation-history">
         <History />
+      </div>
+
+      <div className="recommendation-search">
+        <Search />
       </div>
     </main>
   );
