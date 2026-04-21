@@ -1,5 +1,5 @@
 import './RecommendationForm.css';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import SelectArea from './SelectArea';
 import SelectIngredient from './SelectIngredient';
 import type { Recommendation } from '../types';
@@ -46,11 +46,11 @@ function RecommendationForm({
     resetFocus();
   }
 
-  function updateFields(fields) {
+  const updateFields = useCallback((fields) => {
     setError(null);
     setIsSubmitted(false);
     setFormData((prev) => ({ ...prev, ...fields }));
-  }
+  }, [setFormData]);
 
   const steps = [
     <SelectArea

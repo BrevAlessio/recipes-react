@@ -3,7 +3,12 @@ import './NewIdeaButton.css';
 function NewIdeaButton({ recommendations, setRecommendationIndex }) {
   function getNewIdea() {
     setRecommendationIndex((prev) => {
-      return prev === recommendations.length - 1 ? 0 : prev + 1;
+      const isLast = prev === recommendations.length - 1;
+      if (isLast) {
+        alert('No more recommendations! Starting from the first one.');
+        return 0;
+      }
+      return prev + 1;
     });
   }
 

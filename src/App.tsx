@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import RecommendationCard from './components/RecommendationCard';
 import RecommendationForm from './components/RecommendationForm';
 import type { HistoryItem, Recommendation } from './types';
@@ -33,6 +33,11 @@ function App() {
     };
     addToHistory(newHistoryItem);
   }
+
+  useEffect(() => {
+    // Reset recommendation index when new recommendations are set
+    Promise.resolve().then(() => setRecommendationIndex(0));
+  }, [recommendations]);
 
   return (
     <main>
