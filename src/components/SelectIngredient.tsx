@@ -6,7 +6,13 @@ interface SelectIngredientProps {
   error: string | null;
 }
 
-function SelectIngredient({ updateFields, value, options, isLoading, error }: SelectIngredientProps) {
+function SelectIngredient({
+  updateFields,
+  value,
+  options,
+  isLoading,
+  error,
+}: SelectIngredientProps) {
   const isDisabled = Boolean(isLoading);
   const areas = options?.map(({ strIngredient }) => strIngredient) ?? [];
 

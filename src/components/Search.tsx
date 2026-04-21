@@ -2,7 +2,7 @@ import './Search.css';
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import Skeleton from './Skeleton';
 
-const SearchInput = () => {
+const Search = () => {
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -61,6 +61,7 @@ const SearchInput = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search..."
+        data-testid="search-input"
       />
       <div className="search__list">
         {isLoading && (
@@ -74,7 +75,7 @@ const SearchInput = () => {
         )}
         {results && !results.length && <p>No results found.</p>}
         {results?.slice(0, 5).map((result) => (
-          <div key={result.idMeal} className="search__item">
+          <div key={result.idMeal} className="search__item" data-testid="search-result">
             <img
               src={result.strMealThumb}
               alt={result.strMeal}
@@ -97,4 +98,4 @@ const SearchInput = () => {
   );
 };
 
-export default SearchInput;
+export default Search;
