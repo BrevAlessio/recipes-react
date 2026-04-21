@@ -44,9 +44,10 @@ const SearchInput = () => {
     [setResults],
   );
 
-  const debouncedSearch = useMemo(() => debounce(fetchSearchResults, 600), [
-    fetchSearchResults,
-  ]);
+  const debouncedSearch = useMemo(
+    () => debounce(fetchSearchResults, 600),
+    [fetchSearchResults],
+  );
 
   useEffect(() => {
     debouncedSearch(query);
@@ -64,16 +65,14 @@ const SearchInput = () => {
       <div className="search__list">
         {isLoading && (
           <>
-            <Skeleton width='100%' height='120px' />
-            <Skeleton width='100%' height='120px' />
-            <Skeleton width='100%' height='120px' />
-            <Skeleton width='100%' height='120px' />
-            <Skeleton width='100%' height='120px' />
+            <Skeleton width="100%" height="120px" />
+            <Skeleton width="100%" height="120px" />
+            <Skeleton width="100%" height="120px" />
+            <Skeleton width="100%" height="120px" />
+            <Skeleton width="100%" height="120px" />
           </>
         )}
-        {results && !results.length && (
-          <p>No results found.</p>
-        )}
+        {results && !results.length && <p>No results found.</p>}
         {results?.slice(0, 5).map((result) => (
           <div key={result.idMeal} className="search__item">
             <img

@@ -36,13 +36,13 @@ export const HistoryProvider = ({ children }: { children: React.ReactNode }) => 
   const [history, setHistory] = useState<HistoryItem[]>(getInitialHistory);
 
   // Save history to localStorage when it changes
-  useEffect(() => {    
+  useEffect(() => {
     // Create a copy for localStorage
     const historyForStorage = history.map((item) => ({
       ...item,
       createdAt: item.createdAt.toISOString(),
     }));
-    
+
     localStorage.setItem(HISTORY_KEY, JSON.stringify(historyForStorage));
   }, [history]);
 

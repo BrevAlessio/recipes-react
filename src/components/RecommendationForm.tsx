@@ -46,11 +46,14 @@ function RecommendationForm({
     resetFocus();
   }
 
-  const updateFields = useCallback((fields) => {
-    setError(null);
-    setIsSubmitted(false);
-    setFormData((prev) => ({ ...prev, ...fields }));
-  }, [setFormData]);
+  const updateFields = useCallback(
+    (fields) => {
+      setError(null);
+      setIsSubmitted(false);
+      setFormData((prev) => ({ ...prev, ...fields }));
+    },
+    [setFormData],
+  );
 
   const steps = [
     <SelectArea
