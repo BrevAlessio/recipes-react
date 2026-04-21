@@ -15,30 +15,35 @@ export const HistoryContext = createContext<{
 const HISTORY_KEY = 'history';
 
 export const HistoryProvider = ({ children }: { children: React.ReactNode }) => {
-  const [history, setHistory] = useState<HistoryItem[]>([]);
-  const hydrated = useRef(false);
-
-  useEffect(() => {
+  // Initialize state from localStorage
+  const getInitialHistory = (): HistoryItem[] => {
     const stored = localStorage.getItem(HISTORY_KEY);
     if (stored) {
       try {
-        Promise.resolve().then(() => {
-          setHistory(JSON.parse(stored));
-          hydrated.current = true;
-        });
-      } catch {
-        console.error('Failed to parse history from localStorage, clearing it');
-        Promise.resolve().then(() => {
-          setHistory([]);
-          hydrated.current = true;
-        });
+        const parsedHistory = JSON.parse(stored);
+        return parsedHistory.map((item: HistoryItem) => ({
+          ...item,
+          createdAt: new Date(item.createdAt),
+        }));
+      } catch (error) {
+        console.error('Failed to parse history from localStorage, clearing it', error);
+        return [];
       }
     }
-  }, []);
+    return [];
+  };
 
-  useEffect(() => {
-    if (!hydrated.current) return;
-    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  const [history, setHistory] = useState<HistoryItem[]>(getInitialHistory);
+
+  // Save history to localStorage when it changes
+  useEffect(() => {    
+    // Create a copy for localStorage
+    const historyForStorage = history.map((item) => ({
+      ...item,
+      createdAt: item.createdAt.toISOString(),
+    }));
+    
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(historyForStorage));
   }, [history]);
 
   const addToHistory = (item: HistoryItem) =>

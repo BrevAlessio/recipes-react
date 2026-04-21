@@ -1,5 +1,5 @@
 import './Search.css';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Skeleton from './Skeleton';
 
 const SearchInput = () => {
@@ -44,7 +44,7 @@ const SearchInput = () => {
     [setResults],
   );
 
-  const debouncedSearch = useCallback(debounce(fetchSearchResults, 600), [
+  const debouncedSearch = useMemo(() => debounce(fetchSearchResults, 600), [
     fetchSearchResults,
   ]);
 

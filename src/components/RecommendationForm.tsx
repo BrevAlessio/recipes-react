@@ -5,8 +5,8 @@ import SelectIngredient from './SelectIngredient';
 import type { Recommendation } from '../types';
 import useFetch from '../hooks/useFetch';
 
-function ReccomendationForm({
-  setReccomentations,
+function RecommendationForm({
+  setRecommendations,
   formData,
   setFormData,
   setIsLoadingRecommendations,
@@ -72,7 +72,7 @@ function ReccomendationForm({
   const isSubmitDisabled =
     !(formData.area && formData.ingredient) || isSubmitting || isSubmitted;
 
-  async function handleSubmit(e: React.SubmitEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsSubmitting(true);
     setIsLoadingRecommendations(true);
@@ -91,12 +91,12 @@ function ReccomendationForm({
         throw new Error(`No recommendations found for the selected area and ingredient.`);
       }
 
-      setReccomentations(result.meals);
+      setRecommendations(result.meals);
       setIsSubmitted(true);
       setError(null);
       setStep(0);
     } catch (error: unknown) {
-      setReccomentations([]);
+      setRecommendations([]);
       // To be better defined based on the error
       setError(
         error instanceof Error
@@ -110,10 +110,10 @@ function ReccomendationForm({
   }
 
   return (
-    <form className="reccomendation-form" onSubmit={handleSubmit}>
+    <form className="recommendation-form" onSubmit={handleSubmit}>
       {steps[currentStep]}
 
-      <div className="reccomendation-form__navigation">
+      <div className="recommendation-form__navigation">
         <button onClick={prev} disabled={currentStep === 0}>
           {'⬅️ Back'}
         </button>
@@ -125,7 +125,7 @@ function ReccomendationForm({
       <button
         type="submit"
         disabled={isSubmitDisabled}
-        className="reccomendation-form__submit magic-button magic-button--smaller"
+        className="recommendation-form__submit magic-button magic-button--smaller"
       >
         Cook 🧑‍🍳
       </button>
@@ -134,4 +134,4 @@ function ReccomendationForm({
   );
 }
 
-export default ReccomendationForm;
+export default RecommendationForm;

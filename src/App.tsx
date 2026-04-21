@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import RecommendationCard from './components/RecommendationCard';
-import RecomendationForm from './components/RecommendationForm';
+import RecommendationForm from './components/RecommendationForm';
 import type { HistoryItem, Recommendation } from './types';
 import NewIdeaButton from './components/NewIdeaButton';
 import Feedback from './components/Feedback';
@@ -36,11 +36,11 @@ function App() {
 
   return (
     <main>
-      <h1 className="title">Get your meal reccomendation!</h1>
+      <h1 className="title">Get your meal recommendation!</h1>
 
       <div className="recommendation-form">
-        <RecomendationForm
-          setReccomentations={setRecommendations}
+        <RecommendationForm
+          setRecommendations={setRecommendations}
           formData={formData}
           setFormData={setFormData}
           setIsLoadingRecommendations={setIsLoadingRecommendations}

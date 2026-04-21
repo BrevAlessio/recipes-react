@@ -1,27 +1,27 @@
-.reccomendation-form {
+.recommendation-form {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
 }
 
-.reccomendation-form__submit {
+.recommendation-form__submit {
   width: 100px;
   font-size: medium;
   margin: auto;
 }
 
-.reccomendation-form__navigation {
+.recommendation-form__navigation {
   display: flex;
   justify-content: space-between;
 }
 
-.reccomendation-form__navigation button {
+.recommendation-form__navigation button {
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
-.reccomendation-form__steps {
+.recommendation-form__steps {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
