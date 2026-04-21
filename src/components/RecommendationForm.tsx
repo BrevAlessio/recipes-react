@@ -1,16 +1,31 @@
 import './RecommendationForm.css';
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import SelectArea from './SelectArea';
 import SelectIngredient from './SelectIngredient';
 import type { Recommendation } from '../types';
 import useFetch from '../hooks/useFetch';
+
+interface RecommendationFormProps {
+  setRecommendations: (recommendations: Recommendation[]) => void;
+  formData: {
+    area: string | null;
+    ingredient: string | null;
+  };
+  setFormData: React.Dispatch<
+    React.SetStateAction<{
+      area: string | null;
+      ingredient: string | null;
+    }>
+  >;
+  setIsLoadingRecommendations: (isLoading: boolean) => void;
+}
 
 function RecommendationForm({
   setRecommendations,
   formData,
   setFormData,
   setIsLoadingRecommendations,
-}) {
+}: RecommendationFormProps) {
   const [currentStep, setStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -75,7 +90,7 @@ function RecommendationForm({
   const isSubmitDisabled =
     !(formData.area && formData.ingredient) || isSubmitting || isSubmitted;
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: HTMLFormElement) {
     e.preventDefault();
     setIsSubmitting(true);
     setIsLoadingRecommendations(true);

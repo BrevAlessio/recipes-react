@@ -1,4 +1,12 @@
-function SelectArea({ updateFields, value, options, isLoading, error }) {
+interface SelectAreaProps {
+  updateFields: (fields: { area: string }) => void;
+  value: string | null;
+  options: { strArea: string }[] | null;
+  isLoading: boolean;
+  error: string | null;
+}
+
+function SelectArea({ updateFields, value, options, isLoading, error }: SelectAreaProps) {
   const isDisabled = Boolean(isLoading || error);
   const errorMessage = error ? <p className="error-message">An error occurred</p> : null;
   const areas = options?.map(({ strArea }) => strArea) ?? [];

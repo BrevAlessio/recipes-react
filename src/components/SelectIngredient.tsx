@@ -1,4 +1,12 @@
-function SelectIngredient({ updateFields, value, options, isLoading, error }) {
+interface SelectIngredientProps {
+  updateFields: (fields: { ingredient: string }) => void;
+  value: string | null;
+  options: { strIngredient: string }[] | null;
+  isLoading: boolean;
+  error: string | null;
+}
+
+function SelectIngredient({ updateFields, value, options, isLoading, error }: SelectIngredientProps) {
   const isDisabled = Boolean(isLoading);
   const areas = options?.map(({ strIngredient }) => strIngredient) ?? [];
 
